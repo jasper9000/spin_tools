@@ -1,4 +1,4 @@
-name: base
+name: spin_tools
 channels:
   - conda-forge
 dependencies:
