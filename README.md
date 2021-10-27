@@ -7,6 +7,7 @@ Install anaconda (miniforge for M1 Mac). Activate the conda environment in your 
 
 To install the required packages, use the provided conda environment file with
 `conda env create --file environment.yaml`.
+For M1 Mac, qutip (which is required) has to be compiled and installed from souce.
 
 Install this library by navigating to its root directory and executing
 `conda develop .`
