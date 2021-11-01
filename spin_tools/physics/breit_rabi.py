@@ -1,5 +1,4 @@
 import numpy as np
-from numpy.core.numeric import zeros_like
 from collections.abc import Iterable
 import qutip
 from .constants import *
@@ -22,7 +21,7 @@ def E_hf_breit_rabi_legacy(F, mf, B, atom):
         else:
             E_hf_tmp += h*atom.delta_E_hf/2 * \
                 np.sqrt((1 + 4*mf*x/(2*atom.I+1) + x**2))
-    return E_hf_tmp/h*1e-6
+    return E_hf_tmp
     
 def E_hf_breit_rabi(B, atom, F):
     # convert to Tesla
@@ -61,7 +60,7 @@ def E_hf_breit_rabi(B, atom, F):
             
             E_hf_tmp[0, i] += h*atom.delta_E_hf/2 * (1 + np.sign(mFs[0])*x)
             E_hf_tmp[-1, i] += h*atom.delta_E_hf/2 * (1 + np.sign(mFs[-1])*x)
-    return E_hf_tmp/h*1e-6
+    return E_hf_tmp
 
 def E_hf_numerical(B, atom):
     # convert to Tesla
@@ -110,7 +109,7 @@ def E_hf_numerical(B, atom):
 
         H_z = (mu_bohr/hbar)*(qutip.tensor(I_id,atom.g_J*J_op[2]) + qutip.tensor(atom.g_I*I_op[2], J_id)) * b
         H = H_hf + H_z
-        E[:, i] = H.eigenenergies()*hbar/h*1e-6
+        E[:, i] = H.eigenenergies()*hbar
     return E
 
 
